@@ -177,7 +177,7 @@ async def count_bookings_per_room():
         df['month_number'] = df['month'].dt.month
 
         # Contar la cantidad de reservas por mes
-        grouped = df.groupby(['month', 'monthNumber']).size().reset_index(name='reservation_count')
+        grouped = df.groupby(['month', 'monthNumber']).size().reset_index(name='reservationCount')
 
         # Convertir el resultado a formato JSON compatible con FastAPI
         result = grouped.to_dict(orient='records')
