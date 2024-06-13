@@ -125,7 +125,7 @@ async def calculate_payments():
         df['month'] = df['date'].dt.to_period('M')  # Agrupa por mes
         
         # Obtener el número del mes como entero
-        df['month_number'] = df['month'].dt.month
+        df['monthNumber'] = df['month'].dt.month
 
         grouped = df.groupby(['month', 'monthNumber'])['fullPayment'].sum().reset_index()
         
@@ -174,7 +174,7 @@ async def count_bookings_per_room():
         # Agregar una columna para el mes
         df['month'] = df['date'].dt.to_period('M')  # Agrupa por mes
 
-        df['month_number'] = df['month'].dt.month
+        df['monthNumber'] = df['month'].dt.month
 
         # Contar la cantidad de reservas por mes
         grouped = df.groupby(['month', 'monthNumber']).size().reset_index(name='reservationCount')
