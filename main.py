@@ -127,7 +127,7 @@ async def calculate_payments():
         # Obtener el número del mes como entero
         df['month_number'] = df['month'].dt.month
 
-        grouped = df.groupby(['month', 'month_number'])['fullPayment'].sum().reset_index()
+        grouped = df.groupby(['month', 'monthNumber'])['fullPayment'].sum().reset_index()
         
         # Convertir el resultado a formato JSON compatible con FastAPI
         result = grouped.to_dict(orient='records')
@@ -177,7 +177,7 @@ async def count_bookings_per_room():
         df['month_number'] = df['month'].dt.month
 
         # Contar la cantidad de reservas por mes
-        grouped = df.groupby(['month', 'month_number']).size().reset_index(name='reservation_count')
+        grouped = df.groupby(['month', 'monthNumber']).size().reset_index(name='reservation_count')
 
         # Convertir el resultado a formato JSON compatible con FastAPI
         result = grouped.to_dict(orient='records')
